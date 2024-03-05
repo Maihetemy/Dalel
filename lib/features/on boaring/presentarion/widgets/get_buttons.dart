@@ -1,5 +1,6 @@
 import 'package:dalel/core/functions/navigate_push.dart';
 import 'package:dalel/core/uitils/app_strings.dart';
+import 'package:dalel/data/cache_helper.dart';
 import 'package:dalel/features/on%20boaring/data/models/on_boarding_model.dart';
 import 'package:dalel/features/on%20boaring/presentarion/widgets/custom_buttom.dart';
 import 'package:dalel/features/on%20boaring/presentarion/widgets/gesture_detector_text.dart';
@@ -19,6 +20,7 @@ class GetButtons extends StatelessWidget {
           CustomButton(
             buttonString: AppStrings.createAccount,
             onPressed: () {
+              CacheHelper().saveData(key: "onBoardingvisited", value: true);
               customNavigate(context, '/registerScreen');
             },
           ),
@@ -29,6 +31,7 @@ class GetButtons extends StatelessWidget {
             child: GestureDetectorText(
               text: AppStrings.loginNow,
               function: () {
+                CacheHelper().saveData(key: "onBoardingvisited", value: true);
                 pushReplacementNavigate(context, '/loginScreen');
               },
             ),
@@ -52,6 +55,7 @@ class GetButtons extends StatelessWidget {
     }
   }
 }
+
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
 

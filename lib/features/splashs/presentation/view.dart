@@ -1,5 +1,6 @@
 import 'package:dalel/core/functions/navigate_push.dart';
 import 'package:dalel/core/uitils/app_text_styles.dart';
+import 'package:dalel/data/cache_helper.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,12 +13,20 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    delayedNavigate(context);
+    bool onBoardingvisited = CacheHelper().getData(key: "onBoardingvisited") ?? false;
+    // onBoardingvisited = CacheHelper().getData(key: "onBoardingvisited");
+    if (onBoardingvisited == true) {
+      delayedNavigate(context, '/registerScreen');
+    } else {
+      delayedNavigate(context, '/onBoarding');
+    }
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Scaffold(
       body: Center(
           child: Text(
@@ -28,13 +37,13 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-void delayedNavigate(context) {
+void delayedNavigate(context, String path) {
   Future.delayed(
     const Duration(
       seconds: 2,
     ),
     () {
-      pushReplacementNavigate(context, '/onBoarding');
+      pushReplacementNavigate(context, path);
     },
   );
 }
