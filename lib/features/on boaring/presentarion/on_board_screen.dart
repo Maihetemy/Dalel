@@ -1,6 +1,6 @@
 import 'package:dalel/core/functions/navigate_push.dart';
 import 'package:dalel/core/uitils/app_strings.dart';
-import 'package:dalel/data/cache_helper.dart';
+import 'package:dalel/features/on%20boaring/functions/onboarding_visited.dart';
 import 'package:dalel/features/on%20boaring/presentarion/widgets/get_buttons.dart';
 import 'package:dalel/features/on%20boaring/presentarion/widgets/on_boarding_page_view.dart';
 import 'package:dalel/features/on%20boaring/presentarion/widgets/gesture_detector_text.dart';
@@ -31,7 +31,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 child: GestureDetectorText(
                   text: AppStrings.skip,
                   function: () {
-                    CacheHelper().saveData(key: "onBoardingvisited", value: true);
+                    onBoardingVisited();
                     pushReplacementNavigate(context, '/registerScreen');
                   },
                 ),
