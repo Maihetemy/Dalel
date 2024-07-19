@@ -14,7 +14,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     bool onBoardingvisited = CacheHelper().getData(key: "onBoardingvisited") ?? false;
-    // onBoardingvisited = CacheHelper().getData(key: "onBoardingvisited");
     if (onBoardingvisited == true) {
       delayedNavigate(context, '/registerScreen');
     } else {
@@ -31,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
           child: Text(
         'Dalel',
-        style: TextStyles.pacifico400style50,
+        style: TextStyles.pacifico400style64,
       )),
     );
   }
